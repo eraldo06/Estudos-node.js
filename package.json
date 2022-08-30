@@ -1,0 +1,27 @@
+{
+  "name": "pergunta-resposta-nodejs",
+  "version": "1.0.0",
+  "description": "Pacote para testar",
+  "main": "aula01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eraldo06/Estudos-node.js.git"
+  },
+  "keywords": [
+    "url",
+    "pergunta",
+    "resposta"
+  ],
+  "author": "Eraldo Leonardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eraldo06/Estudos-node.js/issues"
+  },
+  "homepage": "https://github.com/eraldo06/Estudos-node.js#readme",
+  "dependencies": {
+    "query-string": "^7.1.1"
+  }
+}
