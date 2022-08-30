@@ -20,17 +20,18 @@ const server = http.createServer((req, res) => {
 
 
   // veriifcar a pergunta e escolher uma resposta
+  let resposta;
   if(params.pergunta == 'melhor-filme'){
-    console.log('Ben 10');
+   resposta = 'ben 10'
   } else{
-    console.log('não entendir, desculpe');
+    resposta = 'não sei'
   }
 
   // retornar a resposta escolhida 
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end(params.pergunta);
+  res.end(resposta);
 });
 
 
