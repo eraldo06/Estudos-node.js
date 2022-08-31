@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/eraldo06/Estudos-node.js#readme",
   "dependencies": {
-    "query-string": "^7.1.1"
+    "query-string": "^7.1.1",
+    "url": "^0.11.0"
   }
 }

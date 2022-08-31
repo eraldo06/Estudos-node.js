@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
 
   // pegar a pergunta na url
  
-  const params = queryString.parse(url.parse(req.url, true).search);
+ const params = queryString.parse(url.parse(req.url, true).search);
 
 
   // veriifcar a pergunta e escolher uma resposta
@@ -26,6 +26,8 @@ const server = http.createServer((req, res) => {
   } else{
     resposta = 'não sei'
   }
+ //const params = queryString.parse(url.parse(req,url, true).search);
+  //console.log(params);
 
   // retornar a resposta escolhida 
 

@@ -1,37 +1,37 @@
 
 // Incluindo uma biblioteca/pacote
 const http = require('http');
-const url = require('url');
 const queryString = require('query-string');
+const url = require('url');
+const fs = require('fs');
 
 // definição de endereço URL
 // Localhost
 const hostname = '127.0.0.1'; 
 const port = 3000;
 
-
-
 // Implementação da regra de negócio
 const server = http.createServer((req, res) => {
 
-  // pegar a pergunta na url
- 
-  const params = queryString.parse(url.parse(req.url, true).search);
-
-
-  // veriifcar a pergunta e escolher uma resposta
   let resposta;
-  if(params.pergunta == 'melhor-filme'){
-   resposta = 'ben 10'
-  } else{
-    resposta = 'não sei'
-  }
 
-  // retornar a resposta escolhida 
+  // pega as informações do usuáiro
+     const params = queryString.parse(url.parse(req.url, true).search);
 
+
+    // salvar as informações
+    fs.writeFile('users/' + params.id +'.txt', JSON.stringify(params), function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+
+   
+  // atualizar umusuario
+  // Selecionar um usuario
+  // Remover um usuário
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end(resposta);
+  res.end("HEllo Word");
 });
 
 
