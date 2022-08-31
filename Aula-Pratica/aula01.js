@@ -7,31 +7,45 @@ const fs = require('fs');
 
 // definição de endereço URL
 // Localhost
-const hostname = '127.0.0.1'; 
+const hostname = '127.0.0.1';
 const port = 3000;
 
 // Implementação da regra de negócio
 const server = http.createServer((req, res) => {
 
-  let resposta;
-
+  const urlparse = url.parse(req.url, true);
   // pega as informações do usuáiro
-     const params = queryString.parse(url.parse(req.url, true).search);
-
+  const params = queryString.parse(urlparse.search);
+  var resposta;
+  if (urlparse.pathname == '/criar') {
 
     // salvar as informações
-    fs.writeFile('users/' + params.id +'.txt', JSON.stringify(params), function (err) {
+    // atualizar umusuario
+    fs.writeFile('users/' + params.id + '.txt', JSON.stringify(params), function (err) {
       if (err) throw err;
       console.log('Saved!');
-    });
+      resposta = 'sucesso'
 
-   
-  // atualizar umusuario
-  // Selecionar um usuario
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(resposta);
+    });
+  }
+  
+     // Selecionar um usuario
+    else if (urlparse.pathname == '/selecionar') {
+    fs.readFile('users/' + params.id + '.txt', function (err, data) {
+  
+      resposta = data;
+
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(resposta);
+    });
+  }
+
   // Remover um usuário
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end("HEllo Word");
+
 });
 
 
