@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
       if (err) throw err;
       console.log('File deleted!');
 
-      resposta = 'File deleted!';
+      resposta = err ?'usuário removido!' : 'usuário não encrotrado';
 
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
