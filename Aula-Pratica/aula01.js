@@ -39,7 +39,22 @@ const server = http.createServer((req, res) => {
       resposta = data;
 
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
+      res.setHeader('Content-Type', 'application/json');
+      res.end(resposta);
+    });
+  }
+
+   // Remover um usuário
+
+  else if(urlparse.pathname == '/remover'){
+    fs.unlink('users/' + params.id + '.txt', function (err) {
+      if (err) throw err;
+      console.log('File deleted!');
+
+      resposta = 'File deleted!';
+
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
       res.end(resposta);
     });
   }
