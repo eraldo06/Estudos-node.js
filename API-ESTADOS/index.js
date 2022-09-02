@@ -8,9 +8,9 @@ const server = http.createServer((req, res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     
-    res.write(JSON.stringify(ListES));// mudança de JSON para TEXTO
+    res.write(JSON.stringify(ListES));// mudança de OBJETO para JSON
     return res.end(); // Retorno
 });
 
 // porta do servidor
-server.listen(8000); 
+server.listen(8000, () => console.log("Servidor rodando")); 
