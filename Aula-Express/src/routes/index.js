@@ -9,18 +9,8 @@ routes.get("/", (req, res) => {
 
 // vai listar os produtos cadastrado
 routes.get("/produto/lista", produtoController.listarProduto);
+routes.post("/produto", produtoController.cadastrarProduto);
 
-// pegar informação pela url
-routes.get("/produto/:id/:nome/:idade", (req, res) => {
-    console.log(req.params);
-    res.send("Cadastrado"); 
-});
-
-// pega informação pela url
-routes.post("/cadastrar", (req, res)=>{
-    console.log(req.body);
-    res.send(req.body);
-});
 
 module.exports = routes;
 
