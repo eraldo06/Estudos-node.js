@@ -1,7 +1,11 @@
 const express = require("express") // Exportando o Express
 const routes = require("./routes") // rota externa
 
+const db = require("./database")
+
 const app = express();
+
+db.hasCnoection();
 
 app.use(express.json());
 app.use(routes); // usar as rotas externas
