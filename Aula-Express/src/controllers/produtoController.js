@@ -1,25 +1,38 @@
 const Produtos = require("../models/Produtos");
 
-const produtoController ={
+const produtoController = {
 
-    // produtos
-    listarProduto: async (req, res)=>{
+    // Listar Produtos
+    listarProduto: async (req, res) => {
         const listaDePodrotu = await Produtos.findAll();
         res.json(listaDePodrotu);
     },
 
-        // cadastrar um produto
-       async cadastrarProduto(req, res){ // função
-            const { nome, preco, quantidade } = req.body; // oq vai entrar
 
-            const novoProduto = await Produtos.create({
-                nome,
-                preco,
-                quantidade,
-            });
+    // Cadastrar um produto
+    async cadastrarProduto(req, res) { // função
+        const { nome, preco, quantidade } = req.body; // oq vai entrar
 
-            res.json(novoProduto); // oq vai aparecer no html
-        },
+        const novoProduto = await Produtos.create({
+            nome,
+            preco,
+            quantidade,
+        });
+
+        res.json(novoProduto); // oq vai aparecer no html
+    },
+
+    // Deletar um produto
+    async deletarProduto(req, res){
+        const {id} = req.params;
+
+        await Produtos.destroy({
+            where:{
+                id,
+            },
+        });
+        res.json("Produto deletado");
+    },
 };
 
 module.exports = produtoController; // exportando um produto

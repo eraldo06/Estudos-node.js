@@ -3,10 +3,11 @@ const produtoController = require('../controllers/produtoController') // pegando
 const routes = express.Router();
 
 
-// vai listar os produtos cadastrado
+// rotas
 routes.get("/produto/lista", produtoController.listarProduto);
 routes.post("/produto/criar", produtoController.cadastrarProduto);
-
+routes.delete("/produto/:id/deletar", produtoController.deletarProduto);
+routes.put("/produto/:id/deletar", produtoController.deletarProduto);
 
 module.exports = routes;
 
