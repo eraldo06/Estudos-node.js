@@ -33,6 +33,22 @@ const produtoController = {
         });
         res.json("Produto deletado");
     },
+
+    async atualizarProduto(req, res){
+        const {id} = req.params;
+        const { nome, preco, quantidade } = req.body;
+
+        const produtoAtualizado = await Produtos.update({
+            nome,
+            preco,
+            quantidade,
+        }, {
+            where:{
+                id,
+            },
+        });
+        res.json("Produto Atualizado");
+    },
 };
 
 module.exports = produtoController; // exportando um produto
